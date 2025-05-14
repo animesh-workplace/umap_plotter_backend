@@ -22,12 +22,20 @@ def get_db():
 # Base class for declarative models
 Base = declarative_base()
 
-class UMAPEmbeddingTable(Base):
+class UMAP2DEmbeddingTable(Base):
     __tablename__ = "data_management_umapembedding"
     id = Column(Integer, primary_key=True, index=True)
     cell_id = Column(String, index=True)
     x = Column(Float)
     y = Column(Float)
+
+class UMAP3DEmbeddingTable(Base):
+    __tablename__ = "data_management_3dumapembedding"
+    id = Column(Integer, primary_key=True, index=True)
+    cell_id = Column(String, index=True)
+    x = Column(Float)
+    y = Column(Float)
+    z = Column(Float)
 
 class GeneTable(Base):
     __tablename__ = "data_management_gene"
