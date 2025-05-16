@@ -1,10 +1,12 @@
 from pydantic import BaseModel
 
-class UMAPEmbeddingSchema(BaseModel):
+
+class UMAP2DEmbeddingSchema(BaseModel):
     x: float
     y: float
     cell_id: str
     cluster: str
+
 
 class UMAP3DEmbeddingSchema(BaseModel):
     x: float
