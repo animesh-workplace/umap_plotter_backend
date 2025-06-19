@@ -77,3 +77,31 @@ class GeneExpressionTable(Base):
     gene_name = Column(String)
     expression_value = Column(Float)
     id = Column(Integer, primary_key=True, index=True)
+
+
+class SpatialExpressionTable(Base):
+    __tablename__ = "data_management_spatial_tissue_expression"
+    caf_1 = Column(Float)
+    caf_2 = Column(Float)
+    caf_3 = Column(Float)
+    caf_4 = Column(Float)
+    caf_5 = Column(Float)
+    caf_6 = Column(Float)
+    caf_7 = Column(Float)
+    caf_8 = Column(Float)
+    caf_9 = Column(Float)
+    sample = Column(String)
+    cell_id = Column(String)
+    id = Column(Integer, primary_key=True, index=True)
+
+
+class SpatialPositionTable(Base):
+    __tablename__ = "data_management_spatial_tissue_position"
+    a = Column(Integer)
+    b = Column(Integer)
+    x = Column(Integer)
+    y = Column(Integer)
+    sample = Column(String)
+    cell_id = Column(String)
+    background = Column(Integer)
+    id = Column(Integer, primary_key=True, index=True)
