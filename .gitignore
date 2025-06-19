@@ -12,3 +12,4 @@ wheels/
 # PostgreSQL
 database*/
 bash_script_git
+git_bash
