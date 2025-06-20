@@ -143,6 +143,20 @@ def API_GET_SPATIAL_POSITION(
     ),
     database: Session = Depends(get_db),
 ):
+    """
+    Retrieve spatial coordinates for a given sample image.
+
+    This endpoint returns a list of spatial positions (e.g., x, y coordinates)
+    of cells or spots associated with a specified sample. It can be used to
+    reconstruct the spatial layout of gene expression or other spatial features.
+
+    Parameters:
+    - sample_name (str): The name of the sample for which spatial positions are requested.
+
+    Returns:
+    - List[SpatialPositionSchema]: A list of spatial position objects including cell ID,
+      coordinates, and background flag.
+    """
     return get_spatial_position_for_image(sample_name, database)
 
 
@@ -153,4 +167,18 @@ def API_GET_SPATIAL_EXPRESSION(
     ),
     database: Session = Depends(get_db),
 ):
+    """
+    Retrieve spatial gene expression data for a given sample image.
+
+    This endpoint returns gene expression levels mapped to spatial coordinates
+    for a specific sample. The data can be used for visualizing or analyzing
+    spatial transcriptomics data in tissue sections.
+
+    Parameters:
+    - sample_name (str): The name of the sample for which gene expression data is requested.
+
+    Returns:
+    - List[SpatialExpressionSchema]: A list of expression entries including gene ID,
+      expression value, and corresponding spatial location.
+    """
     return get_spatial_expression_for_image(sample_name, database)
