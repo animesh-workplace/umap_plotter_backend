@@ -1,5 +1,6 @@
 from database import GeneExpressionTable
 
+
 def get_single_gene_expression(gene, db):
     query = gene.strip()
 
@@ -10,6 +11,4 @@ def get_single_gene_expression(gene, db):
         .all()
     )
 
-    # print(expressions)
-    # result = [{expr[1]: expr} for expr in expressions]
     return expressions
