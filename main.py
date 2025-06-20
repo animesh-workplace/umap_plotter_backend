@@ -4,7 +4,6 @@ from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 from data_management.gene import get_unique_gene_names
 from fastapi import FastAPI, Depends, Query, HTTPException
-from schema import UMAP2DEmbeddingSchema, UMAP3DEmbeddingSchema
 from data_management.expression import get_single_gene_expression
 from data_management.embedding import (
     get_umap_embeddings_2d,
@@ -12,6 +11,16 @@ from data_management.embedding import (
     get_tsne_embeddings_2d,
     get_tsne_embeddings_3d,
     get_unique_cell_type_2d,
+)
+from schema import (
+    UMAP2DEmbeddingSchema,
+    UMAP3DEmbeddingSchema,
+    SpatialPositionSchema,
+    SpatialExpressionSchema,
+)
+from data_management.spatial import (
+    get_spatial_position_for_image,
+    get_spatial_expression_for_image,
 )
 
 # FastAPI app
@@ -125,3 +134,23 @@ def API_GET_TSNE_3DEMBEDDING(database: Session = Depends(get_db)):
     List of TSNE embeddings ordered by `cell_id`.
     """
     return get_tsne_embeddings_3d(database)
+
+
+@app.get("/api/spatial/position/", response_model=List[SpatialPositionSchema])
+def API_GET_SPATIAL_POSITION(
+    sample_name: str = Query(
+        ..., description="Sample name to get the positions for the image"
+    ),
+    database: Session = Depends(get_db),
+):
+    return get_spatial_position_for_image(sample_name, database)
+
+
+@app.get("/api/spatial/expression/", response_model=List[SpatialExpressionSchema])
+def API_GET_SPATIAL_EXPRESSION(
+    sample_name: str = Query(
+        ..., description="Sample name to get the expression for the image"
+    ),
+    database: Session = Depends(get_db),
+):
+    return get_spatial_expression_for_image(sample_name, database)
