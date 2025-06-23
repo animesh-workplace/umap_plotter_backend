@@ -25,15 +25,16 @@ from data_management.spatial import (
 
 # FastAPI app
 app = FastAPI()
-origins = ["http://localhost:3000"]
+origins = ["http://localhost:3010", "http:10.10.6.80"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
 )
+BASE_URL = "/fibrohub/api/"
 
 
-@app.get("/api/genes/autocomplete", response_model=List[str])
+@app.get(f"{BASE_URL}genes/autocomplete", response_model=List[str])
 def API_GET_GENE_LIST(
     gene: str = Query(default="", alias="gene"), database: Session = Depends(get_db)
 ):
@@ -60,7 +61,7 @@ def API_GET_GENE_LIST(
     return get_unique_gene_names(gene, database)
 
 
-@app.get("/api/umap/2d/", response_model=List[UMAP2DEmbeddingSchema])
+@app.get(f"{BASE_URL}umap/2d/", response_model=List[UMAP2DEmbeddingSchema])
 def API_GET_UMAP_EMBEDDING(database: Session = Depends(get_db)):
     """
     Retrieve all UMAP embeddings stored in the database.
@@ -72,7 +73,7 @@ def API_GET_UMAP_EMBEDDING(database: Session = Depends(get_db)):
     return get_umap_embeddings_2d(database)
 
 
-@app.get("/api/umap/3d/", response_model=List[UMAP3DEmbeddingSchema])
+@app.get(f"{BASE_URL}umap/3d/", response_model=List[UMAP3DEmbeddingSchema])
 def API_GET_UMAP_3DEMBEDDING(database: Session = Depends(get_db)):
     """
     Retrieve all UMAP embeddings stored in the database.
@@ -84,12 +85,12 @@ def API_GET_UMAP_3DEMBEDDING(database: Session = Depends(get_db)):
     return get_umap_embeddings_3d(database)
 
 
-@app.get("/api/umap/2d/celltype", response_model=List[str])
+@app.get(f"{BASE_URL}umap/2d/celltype", response_model=List[str])
 def API_GET_UMAP_CELL_TYPE(database: Session = Depends(get_db)):
     return get_unique_cell_type_2d(database)
 
 
-@app.get("/api/genes/single-expr/", response_model=Dict[str, float])
+@app.get(f"{BASE_URL}genes/single-expr/", response_model=Dict[str, float])
 def API_GET_SINGLE_GENE_EXPRESSION(
     gene_name: str = Query(..., description="Gene name to filter by"),
     database: Session = Depends(get_db),
@@ -112,7 +113,7 @@ def API_GET_SINGLE_GENE_EXPRESSION(
     }
 
 
-@app.get("/api/tsne/2d/", response_model=List[UMAP2DEmbeddingSchema])
+@app.get(f"{BASE_URL}tsne/2d/", response_model=List[UMAP2DEmbeddingSchema])
 def API_GET_TSNE_EMBEDDING(database: Session = Depends(get_db)):
     """
     Retrieve all TSNE embeddings stored in the database.
@@ -124,7 +125,7 @@ def API_GET_TSNE_EMBEDDING(database: Session = Depends(get_db)):
     return get_tsne_embeddings_2d(database)
 
 
-@app.get("/api/tsne/3d/", response_model=List[UMAP3DEmbeddingSchema])
+@app.get(f"{BASE_URL}tsne/3d/", response_model=List[UMAP3DEmbeddingSchema])
 def API_GET_TSNE_3DEMBEDDING(database: Session = Depends(get_db)):
     """
     Retrieve all TSNE embeddings stored in the database.
@@ -136,7 +137,7 @@ def API_GET_TSNE_3DEMBEDDING(database: Session = Depends(get_db)):
     return get_tsne_embeddings_3d(database)
 
 
-@app.get("/api/spatial/position/", response_model=List[SpatialPositionSchema])
+@app.get(f"{BASE_URL}spatial/position/", response_model=List[SpatialPositionSchema])
 def API_GET_SPATIAL_POSITION(
     sample_name: str = Query(
         ..., description="Sample name to get the positions for the image"
@@ -160,7 +161,7 @@ def API_GET_SPATIAL_POSITION(
     return get_spatial_position_for_image(sample_name, database)
 
 
-@app.get("/api/spatial/expression/", response_model=List[SpatialExpressionSchema])
+@app.get(f"{BASE_URL}spatial/expression/", response_model=List[SpatialExpressionSchema])
 def API_GET_SPATIAL_EXPRESSION(
     sample_name: str = Query(
         ..., description="Sample name to get the expression for the image"
