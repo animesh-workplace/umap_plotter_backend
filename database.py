@@ -104,4 +104,6 @@ class SpatialPositionTable(Base):
     sample = Column(String)
     cell_id = Column(String)
     background = Column(Integer)
+    te_annotation = Column(String)
+    path_annotation = Column(String)
     id = Column(Integer, primary_key=True, index=True)
