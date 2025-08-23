@@ -25,7 +25,7 @@ from data_management.spatial import (
 
 # FastAPI app
 app = FastAPI()
-origins = ["http://localhost:3010", "http:10.10.6.80"]
+origins = ["http://localhost:3010", "http:10.10.6.80", "http://172.15.1.2"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
