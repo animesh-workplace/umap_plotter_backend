@@ -75659,3 +75659,51 @@
 2025-06-23 10:30:51.716 IST [3915449] LOG:  checkpoint starting: end-of-recovery immediate wait
 2025-06-23 10:30:51.744 IST [3915449] LOG:  checkpoint complete: wrote 427 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.018 s, sync=0.008 s, total=0.030 s; sync files=12, longest=0.001 s, average=0.001 s; distance=79 kB, estimate=79 kB; lsn=BB5/7FCCE6F0, redo lsn=BB5/7FCCE6F0
 2025-06-23 10:30:51.747 IST [3915448] LOG:  database system is ready to accept connections
+2025-07-07 10:30:06.588 IST [3915448] LOG:  received smart shutdown request
+2025-07-07 10:30:06.599 IST [3915448] LOG:  background worker "logical replication launcher" (PID 3915454) exited with exit code 1
+2025-07-07 10:30:06.599 IST [3915449] LOG:  shutting down
+2025-07-07 10:30:06.607 IST [3915449] LOG:  checkpoint starting: shutdown immediate
+2025-07-07 10:30:06.617 IST [3915448] LOG:  received SIGHUP, reloading configuration files
+2025-07-07 10:30:06.764 IST [3915449] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.138 s, sync=0.001 s, total=0.165 s; sync files=1, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=71 kB; lsn=BB5/7FCCE7A0, redo lsn=BB5/7FCCE7A0
+2025-07-07 10:30:06.932 IST [3915448] LOG:  database system is shut down
+2025-07-11 12:35:05.292 IST [1125166] LOG:  starting PostgreSQL 17.5 on x86_64-conda-linux-gnu, compiled by x86_64-conda-linux-gnu-cc (conda-forge gcc 13.3.0-2) 13.3.0, 64-bit
+2025-07-11 12:35:05.293 IST [1125166] LOG:  listening on IPv6 address "::1", port 5432
+2025-07-11 12:35:05.293 IST [1125166] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-07-11 12:35:05.294 IST [1125166] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2025-07-11 12:35:05.299 IST [1125169] LOG:  database system was shut down at 2025-07-07 10:30:06 IST
+2025-07-11 12:35:05.304 IST [1125166] LOG:  database system is ready to accept connections
+2025-07-11 12:38:29.830 IST [1125278] ERROR:  relation "data_management_spatial_tissue_position" does not exist at character 15
+2025-07-11 12:38:29.830 IST [1125278] STATEMENT:  select * from data_management_spatial_tissue_position limit 10;
+2025-07-11 12:40:05.352 IST [1125167] LOG:  checkpoint starting: time
+2025-07-11 12:40:09.549 IST [1125167] LOG:  checkpoint complete: wrote 44 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.168 s, sync=0.022 s, total=4.197 s; sync files=35, longest=0.002 s, average=0.001 s; distance=221 kB, estimate=221 kB; lsn=BB5/7FD05F38, redo lsn=BB5/7FD05EE0
+2025-07-11 12:43:13.443 IST [1132747] ERROR:  operator does not exist: text = integer at character 1148
+2025-07-11 12:43:13.443 IST [1132747] HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+2025-07-11 12:43:13.443 IST [1132747] STATEMENT:  SELECT data_management_spatial_tissue_position.a AS data_management_spatial_tissue_position_a, data_management_spatial_tissue_position.b AS data_management_spatial_tissue_position_b, data_management_spatial_tissue_position.x AS data_management_spatial_tissue_position_x, data_management_spatial_tissue_position.y AS data_management_spatial_tissue_position_y, data_management_spatial_tissue_position.sample AS data_management_spatial_tissue_position_sample, data_management_spatial_tissue_position.cell_id AS data_management_spatial_tissue_position_cell_id, data_management_spatial_tissue_position.background AS data_management_spatial_tissue_position_background, data_management_spatial_tissue_position.te_annotation AS data_management_spatial_tissue_position_te_annotation, data_management_spatial_tissue_position.path_annotation AS data_management_spatial_tissue_position_path_annotation, data_management_spatial_tissue_position.id AS data_management_spatial_tissue_position_id 
+	FROM data_management_spatial_tissue_position 
+	WHERE data_management_spatial_tissue_position.sample = 'Sample2' AND data_management_spatial_tissue_position.background = 1
+2025-07-11 12:45:05.633 IST [1125167] LOG:  checkpoint starting: time
+2025-07-11 12:46:46.522 IST [1125167] LOG:  checkpoint complete: wrote 1009 buffers (0.1%); 0 WAL file(s) added, 1 removed, 0 recycled; write=100.878 s, sync=0.002 s, total=100.889 s; sync files=11, longest=0.002 s, average=0.001 s; distance=9563 kB, estimate=9563 kB; lsn=BB5/8065CF68, redo lsn=BB5/8065CED8
+2025-07-11 12:47:11.964 IST [1134305] ERROR:  operator does not exist: text = integer at character 1148
+2025-07-11 12:47:11.964 IST [1134305] HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+2025-07-11 12:47:11.964 IST [1134305] STATEMENT:  SELECT data_management_spatial_tissue_position.a AS data_management_spatial_tissue_position_a, data_management_spatial_tissue_position.b AS data_management_spatial_tissue_position_b, data_management_spatial_tissue_position.x AS data_management_spatial_tissue_position_x, data_management_spatial_tissue_position.y AS data_management_spatial_tissue_position_y, data_management_spatial_tissue_position.sample AS data_management_spatial_tissue_position_sample, data_management_spatial_tissue_position.cell_id AS data_management_spatial_tissue_position_cell_id, data_management_spatial_tissue_position.background AS data_management_spatial_tissue_position_background, data_management_spatial_tissue_position.te_annotation AS data_management_spatial_tissue_position_te_annotation, data_management_spatial_tissue_position.path_annotation AS data_management_spatial_tissue_position_path_annotation, data_management_spatial_tissue_position.id AS data_management_spatial_tissue_position_id 
+	FROM data_management_spatial_tissue_position 
+	WHERE data_management_spatial_tissue_position.sample = 'Sample2' AND data_management_spatial_tissue_position.background = 1
+2025-07-11 12:50:05.621 IST [1125167] LOG:  checkpoint starting: time
+2025-07-11 12:51:31.771 IST [1125167] LOG:  checkpoint complete: wrote 862 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=86.142 s, sync=0.002 s, total=86.150 s; sync files=23, longest=0.002 s, average=0.001 s; distance=9535 kB, estimate=9561 kB; lsn=BB5/80FACC58, redo lsn=BB5/80FACBC8
+2025-07-16 14:20:32.695 IST [1125166] LOG:  received smart shutdown request
+2025-07-16 14:20:32.702 IST [1125166] LOG:  received SIGHUP, reloading configuration files
+2025-07-16 14:20:32.706 IST [1125166] LOG:  background worker "logical replication launcher" (PID 1125172) exited with exit code 1
+2025-07-16 14:20:32.706 IST [1125167] LOG:  shutting down
+2025-07-16 14:20:32.708 IST [1125167] LOG:  checkpoint starting: shutdown immediate
+2025-07-16 14:20:32.743 IST [1125167] LOG:  checkpoint complete: wrote 1 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.024 s, sync=0.002 s, total=0.037 s; sync files=1, longest=0.002 s, average=0.002 s; distance=0 kB, estimate=8605 kB; lsn=BB5/80FACD08, redo lsn=BB5/80FACD08
+2025-07-16 14:20:32.777 IST [1125166] LOG:  database system is shut down
+2025-07-16 17:47:17.842 IST [87551] LOG:  starting PostgreSQL 17.5 on x86_64-conda-linux-gnu, compiled by x86_64-conda-linux-gnu-cc (conda-forge gcc 13.3.0-2) 13.3.0, 64-bit
+2025-07-16 17:47:17.843 IST [87551] LOG:  listening on IPv6 address "::1", port 5432
+2025-07-16 17:47:17.843 IST [87551] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-07-16 17:47:17.843 IST [87551] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2025-07-16 17:47:17.849 IST [87554] LOG:  database system was shut down at 2025-07-16 14:20:32 IST
+2025-07-16 17:47:17.854 IST [87551] LOG:  database system is ready to accept connections
+2025-07-16 17:52:17.947 IST [87552] LOG:  checkpoint starting: time
+2025-07-16 17:52:18.104 IST [87552] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.146 s, sync=0.004 s, total=0.157 s; sync files=3, longest=0.002 s, average=0.002 s; distance=3 kB, estimate=3 kB; lsn=BB5/80FADC70, redo lsn=BB5/80FADC18
+2025-07-21 18:59:15.377 IST [87552] LOG:  checkpoint starting: time
+2025-07-21 18:59:18.717 IST [87552] LOG:  checkpoint complete: wrote 33 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.325 s, sync=0.011 s, total=3.341 s; sync files=13, longest=0.002 s, average=0.001 s; distance=61 kB, estimate=61 kB; lsn=BB5/80FBD240, redo lsn=BB5/80FBD1E8
