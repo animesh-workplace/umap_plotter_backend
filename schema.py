@@ -22,6 +22,8 @@ class SpatialPositionSchema(BaseModel):
     sample: str
     cell_id: str
     background: int
+    te_annotation: str | None
+    path_annotation: str | None
 
 
 class SpatialExpressionSchema(BaseModel):
