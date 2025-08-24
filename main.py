@@ -31,7 +31,7 @@ app.add_middleware(
     allow_origins=origins,
     allow_credentials=True,
 )
-BASE_URL = "/fibrohub/api/"
+BASE_URL = "/fibroscape/api/"
 
 
 @app.get(f"{BASE_URL}genes/autocomplete", response_model=List[str])
