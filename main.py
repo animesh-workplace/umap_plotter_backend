@@ -1,6 +1,6 @@
 from database import get_db
-from typing import List, Dict
 from sqlalchemy.orm import Session
+from typing import List, Dict, Optional
 from fastapi.middleware.cors import CORSMiddleware
 from data_management.gene import get_unique_gene_names
 from fastapi import FastAPI, Depends, Query, HTTPException
@@ -22,6 +22,7 @@ from data_management.spatial import (
     get_spatial_position_for_image,
     get_spatial_expression_for_image,
 )
+from data_management.lineage import get_single_lineage_expression
 
 # FastAPI app
 app = FastAPI()
@@ -110,6 +111,30 @@ def API_GET_SINGLE_GENE_EXPRESSION(
     return {
         item.cell_id: item.expression_value
         for item in get_single_gene_expression(gene_name, database)
+    }
+
+
+@app.get(f"{BASE_URL}lineage/single-expr/", response_model=Dict[str, float])
+def API_GET_SINGLE_LINEAGE_EXPRESSION(
+    lineage: str = Query(..., description="Lineage name to filter by"),
+    database: Session = Depends(get_db),
+):
+    """
+    Get expression values for a specific lineage across all cells
+
+    Parameters:
+    - lineage: Required query parameter specifying the lineage to filter by
+
+    Returns:
+    - List of expression values ordered by cell_id
+    """
+    if not lineage:
+        raise HTTPException(status_code=400, detail="lineage parameter is required")
+
+    return {
+        cell_id: expression
+        for cell_id, expression in get_single_lineage_expression(lineage, database)
+        if expression is not None
     }
 
 
