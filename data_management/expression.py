@@ -11,4 +11,6 @@ def get_single_gene_expression(gene, db):
         .all()
     )
 
+    print("all expression", expressions)
+
     return expressions
