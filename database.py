@@ -95,6 +95,16 @@ class SpatialExpressionTable(Base):
     id = Column(Integer, primary_key=True, index=True)
 
 
+class CAF_LineagesTable(Base):
+    __tablename__ = "data_management_caf_lineages"
+    lineage_1 = Column(Float)
+    lineage_2 = Column(Float)
+    lineage_3 = Column(Float)
+    lineage_4 = Column(Float)
+    cell_id = Column(String)
+    id = Column(Integer, primary_key=True, index=True)
+
+
 class SpatialPositionTable(Base):
     __tablename__ = "data_management_spatial_tissue_position"
     a = Column(Integer)
